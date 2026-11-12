@@ -23,7 +23,7 @@
       ev.preventDefault();
       var de=root.getAttribute('data-lang')==='de', v={};
       ['name','tel','email','date','time','pers','msg'].forEach(function(k){v[k]=(f.elements[k].value||'').trim()});
-      if(!v.name||!v.tel||!v.date||!v.time||!v.pers){err.textContent=de?'Bitte alle Pflichtfelder (*) ausfüllen.':'Please fill in all required fields (*).';return;}
+      if(!v.name||!v.tel||!v.email||!v.date||!v.time||!v.pers){err.textContent=de?'Bitte alle Pflichtfelder (*) ausfüllen.':'Please fill in all required fields (*).';return;}
       if(f.elements.botcheck.checked)return;
       var dp=v.date.split('-'), dd=dp[2]+'.'+dp[1]+'.'+dp[0];
       var btn=f.querySelector('button[type=submit]'), ok=document.getElementById('fok');
@@ -34,8 +34,10 @@
         Name:v.name, Telefon:v.tel, Datum:dd, Uhrzeit:v.time, Personen:v.pers,
         Bemerkung:v.msg||'-', Sprache:de?'Deutsch':'English'};
       if(v.email){data.email=v.email; data.replyto=v.email;}
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-        .then(function(r){return r.json()})
+      function w3(){return fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)}).then(function(r){return r.json()})}
+      var api={name:v.name,tel:v.tel,email:v.email,date:v.date,time:v.time,pers:v.pers,msg:v.msg,lang:de?'de':'en'};
+      fetch('/api/reserve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(api)})
+        .then(function(r){if(!r.ok&&r.status!==400)return w3();return r.json().then(function(j){return {success:!!j.ok}})})
         .then(function(j){
           if(!j.success)throw 0;
           f.style.display='none'; ok.style.display='block';
