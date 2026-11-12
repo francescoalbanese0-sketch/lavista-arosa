@@ -87,6 +87,15 @@ h2.wh{font:600 22px 'Cinzel',serif;letter-spacing:.16em;text-transform:uppercase
 .gal img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;transition:transform .6s}
 .gal figure:hover img{transform:scale(1.04)}
 .gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;color:#fff;font:500 13px 'Cinzel',serif;letter-spacing:.16em;text-transform:uppercase;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+.resv{margin-top:56px;border-top:1px solid var(--line);padding-top:40px;scroll-margin-top:80px}
+.rsub{text-align:center;color:var(--grey);font-style:italic;margin:4px 0 22px}
+#rform label{display:block;font:500 12px 'Cinzel',serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:14px}
+#rform input,#rform select,#rform textarea{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #ddd;border-radius:2px;font:18px 'Cormorant Garamond',Georgia,serif;color:var(--ink);background:#fff;text-transform:none;letter-spacing:0}
+#rform input:focus,#rform select:focus,#rform textarea:focus{outline:none;border-color:var(--mag);box-shadow:0 0 0 2px rgba(236,0,140,.12)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.fg3{display:grid;grid-template-columns:1.3fr 1fr .8fr;gap:0 16px}
+#rform .btn{cursor:pointer;width:100%;margin-top:4px;font-size:14px;padding:15px}
+.ferr{color:#c00;font-style:italic;min-height:0;margin:0 0 10px}.fnote{text-align:center;color:var(--grey);font-style:italic;font-size:16px;margin-top:12px}
+@media(max-width:640px){.fg,.fg3{grid-template-columns:1fr}}
 .foot-note{text-align:center;font-style:italic;color:var(--grey);font-size:16px;margin-top:40px}
 .callfab{position:fixed;right:16px;bottom:16px;z-index:30;background:var(--mag);color:#fff;text-decoration:none;font:600 12px 'Cinzel',serif;letter-spacing:.12em;text-transform:uppercase;padding:13px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(236,0,140,.35)}
 @media(min-width:900px){.callfab{display:none}}
